@@ -11,6 +11,8 @@ steps:
   inputs:
     AppSecTestService: 'TestHCL'
     applications: '429181b3-3ee7-4bf4-a163-315f9188691c'
-    scanname: 'test'
+    scanname: 'ufu'
     scantype: 'static'
+    scanloc: '*'
     scanMethod: 'IRX'
+    ScanSpeedOptions: 'thorough'
