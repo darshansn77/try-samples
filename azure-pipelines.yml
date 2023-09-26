@@ -1,24 +1,28 @@
 # CI and PR triggers
-
-
-jobs:
-- job: test
-  pool:
+pool:
   name: MY-WORK
   vmImage: 'darshan-wsl'
-    
-  steps:
-   - task: UseDotNet@2
-     displayName: 'Use .NET Core sdk'
-     inputs:
-       packageType: sdk
-       version: 3.1.200
-       installationPath: $(Agent.ToolsDirectory)/dotnet
-   - task: UseDotNet@2
-     displayName: 'Use .NET Core sdk'
-     inputs:
-       packageType: sdk
-       version: 2.1.700
-       installationPath: $(Agent.ToolsDirectory)/dotnet
-   - script: build.cmd
-   
+
+trigger: none
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 3.1.200
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 2.1.700
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+- script: build.cmd
+- task: HCLAppScanOnCloud@2
+  inputs:
+    AppSecTestService: 'TestHCL'
+    applications: '429181b3-3ee7-4bf4-a163-315f9188691c'
+    scanname: 'test'
+    scantype: 'static'
+    scanMethod: 'IRX'
