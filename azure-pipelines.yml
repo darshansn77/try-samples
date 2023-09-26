@@ -1,13 +1,11 @@
 # CI and PR triggers
-trigger:
-- main
-pr:
-- main
+
 
 jobs:
-- job: Windows
+- job: test
   pool:
-    vmImage: windows-2019
+  name: MY-WORK
+  vmImage: 'darshan-wsl'
     
   steps:
    - task: UseDotNet@2
@@ -23,3 +21,4 @@ jobs:
        version: 2.1.700
        installationPath: $(Agent.ToolsDirectory)/dotnet
    - script: build.cmd
+   
