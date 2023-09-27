@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+
+pool:
+  name: MY-WORK
+  vmImage: 'darshan-wsl'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: HCLAppScanOnCloud@2
+  inputs:
+    AppSecTestService: 'TestHCL'
+    applications: 'e6130149-b9ce-4612-904c-a62f540a7341'
+    scanname: 'twest'
+    scantype: 'static'
+    scanloc: '.'
+    scanMethod: 'IRX'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
