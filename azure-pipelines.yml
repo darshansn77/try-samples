@@ -6,13 +6,11 @@ pool:
 trigger: none
 
 steps:
-
 - task: HCLAppScanOnCloud@2
   inputs:
-    AppSecTestService: 'TestHCL'
-    applications: '429181b3-3ee7-4bf4-a163-315f9188691c'
-    scanname: 'ufu'
+    AppSecTestService: 'HCL-APPSCAN'
+    applications: '9de97e21-6ecc-468a-8fbc-770a8ca97fac'
+    scanname: 'test'
     scantype: 'static'
-    scanloc: '*'
-    scanMethod: 'IRX'
-    ScanSpeedOptions: 'thorough'
+    scanloc: '.'
+    scanMethod: 'IRXless'
