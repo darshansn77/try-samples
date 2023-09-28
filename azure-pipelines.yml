@@ -10,7 +10,8 @@ steps:
   inputs:
     AppSecTestService: 'HCL-APPSCAN'
     applications: '9de97e21-6ecc-468a-8fbc-770a8ca97fac'
-    scanname: 'test'
+    scanname: 'tsets'
     scantype: 'static'
     scanloc: '.'
-    scanMethod: 'IRXless'
+    scanMethod: 'IRX'
+    ScanSpeedOptions: 'thorough'
